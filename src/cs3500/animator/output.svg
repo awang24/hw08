@@ -1,0 +1,14 @@
+<svg width="1000" height="1000" version="1.1"
+xmlns="http://www.w3.org/2000/svg">
+<rect>
+<animate id="base" begin="0;base.end" dur="2000.0ms" attributeName="visibility" from="hide" to="hide"/>
+</rect>
+<ellipse id="C" cx="500.0" cy="100.0" rx="60.0" ry="30.0" fill="rgb(0,0,255)" visibility="visible">
+<animate attributeType="xml" begin="base.begin+400.0ms" dur="1000.0ms" attributeName="cx" from="500.0" to="500.0" fill="freeze" />
+<animate attributeType="xml" begin="base.begin+400.0ms" dur="1000.0ms" attributeName="cy" from="100.0" to="400.0" fill="freeze" />
+<animate attributeType="xml" begin="base.end" dur="1ms" attributeName="cx" from="500.0" to="500.0" fill="freeze" />
+<animate attributeType="xml" begin="base.end" dur="1ms" attributeName="cy" from="400.0" to="100.0" fill="freeze" />
+<animate attributeType="xml" begin="base.begin+1000.0ms" dur="600.0ms" attributeName="fill" from="rgb(0,0,255)" to="rgb(0,255,0)" fill="freeze" />
+<animate attributeType="xml" begin="base.end" dur="1ms" attributeName="fill" from="rgb(0,255,0)" to="rgb(0,0,255)" fill="freeze" />
+</ellipse>
+</svg>
