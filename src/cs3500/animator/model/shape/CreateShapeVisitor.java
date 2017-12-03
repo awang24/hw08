@@ -20,11 +20,11 @@ public class CreateShapeVisitor implements IShapeVisitor {
   }
 
   @Override
-  public Shapes visit(RectangleShape shape) {
+  public Shapes visit(Rectangle shape) {
     Posn p = new Posn(shape.getPosn().getX(), shape.getPosn().getY());
     Color shapeColor = shape.getColor();
     Color c = new Color(shapeColor.getRed(), shapeColor.getGreen(), shapeColor.getBlue());
-    Shapes newRect = new RectangleShape(shape.getName(), shape.getAppear(), shape.getDisappear(),
+    Shapes newRect = new Rectangle(shape.getName(), shape.getAppear(), shape.getDisappear(),
             p, c, shape.getD1(), shape.getD2());
     newRect.setRender(shape.getRender());
     return newRect;

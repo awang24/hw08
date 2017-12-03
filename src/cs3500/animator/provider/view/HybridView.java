@@ -223,7 +223,6 @@ public class HybridView extends JFrame implements IView {
   @Override
   public void setShapes(List<IShape> shapes) {
     this.shapes = shapes;
-    addShapesToCheckBox();
     hybridAnimationPanel.setAnimationMap(selectedShapes);
     hybridAnimationPanel.setShapes(this.shapes);
   }

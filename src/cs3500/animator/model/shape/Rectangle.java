@@ -7,22 +7,22 @@ import cs3500.animator.model.Utils;
 /**
  * Represents a rectangle.
  */
-public class RectangleShape extends AShape {
+public class Rectangle extends AShape {
 
   /**
-   * Constructs a {@code RectangleShape} object.
+   * Constructs a {@code Rectangle} object.
    *
    * @param name      Name of the shape
    * @param appear    Time when shape appears
    * @param disappear Time when shape disappears
    * @param p         Coordinate of shape
-   * @param c         Color of shape
+   * @param c         ColorAdapter of shape
    * @param w         Width of rectangle
    * @param h         Height of rectangle
    * @throws IllegalArgumentException if width or height are negative
    */
-  public RectangleShape(String name, int appear, int disappear, Posn p, Color c,
-                        double w, double h) {
+  public Rectangle(String name, int appear, int disappear, Posn p, Color c,
+                   double w, double h) {
     super(name, ShapeType.RECTANGLE, appear, disappear, p, c, w, h);
   }
 

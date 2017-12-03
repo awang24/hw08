@@ -8,8 +8,8 @@ package cs3500.animator.provider.model;
  */
 
 
-import cs3500.animator.model.shapeAdapter.Color;
-import cs3500.animator.model.shapeAdapter.Posn;
+import cs3500.animator.model.shapeAdapter.ColorAdapter;
+import cs3500.animator.model.shapeAdapter.PosnAdapter;
 
 /**
  * This is the interface of the Shape. It may include all the basic functions needed for Shape.
@@ -46,7 +46,7 @@ public interface IShape {
    *
    * @return the position of the shape.
    */
-  Posn getPosn();
+  IPosn getPosn();
 
 
   /**
@@ -97,14 +97,14 @@ public interface IShape {
    *
    * @param c the color that is going to assign in
    */
-  void updateColor(Color c);
+  void updateColor(IColor c);
 
   /**
    * Update the shape's posn to the given p, and then return a copy of the shape.
    *
    * @param p the posn that is going to assign in
    */
-  void updatePosn(Posn p);
+  void updatePosn(IPosn p);
 
   /**
    * Update the shape's x and y to the given x and y, and then return a copy of the shape.
@@ -159,14 +159,14 @@ public interface IShape {
    *
    * @param color the value that is going to be assigned in.
    */
-  void setColor(Color color);
+  void setColor(IColor color);
 
   /**
-   * set the Posn to the shape.
+   * set the PosnAdapter to the shape.
    *
    * @param posn the value that is going to be assigned in.
    */
-  void setPosn(Posn posn);
+  void setPosn(IPosn posn);
 
   /**
    * set the x to the shape.
@@ -182,4 +182,9 @@ public interface IShape {
    */
   void setY(float y);
 
+  /**
+   * copy the shape.
+   * @return a copy of shape.
+   */
+  IShape copyShape();
 }

@@ -1,4 +1,5 @@
 /*
+
 package cs3500.animator.provider.model;
 
 
@@ -8,6 +9,7 @@ import java.util.Collections;
 
 import cs3500.animator.model.IAnimationModel;
 import cs3500.animator.starter.TweenModelBuilder;
+
 
 
 */
@@ -23,21 +25,26 @@ import cs3500.animator.starter.TweenModelBuilder;
  *//*
 
 
+
+
 */
 /**
  * This is a AnimationModel Class which implements AnimationModel Interface. This class plays the
  * Model Role in MVC-Structured program.
  *//*
 
+
 public final class AnimationModel implements cs3500.animator.provider.model.IAnimationModel {
   private ArrayList<IShape> loShape;
   private ArrayList<IAnimationOperations> loOperations;
 
 
-  */
+
+*/
 /**
    * Constructor of AnimationModel. Initially, the fields are both an empty list.
    *//*
+
 
   public AnimationModel() {
     this.loShape = new ArrayList<IShape>();
@@ -45,7 +52,8 @@ public final class AnimationModel implements cs3500.animator.provider.model.IAni
   }
 
 
-  */
+
+*/
 /**
    * Constructor of AnimationModel. This is for copying the data from the parameters in case others
    * can access this field and change it.
@@ -53,6 +61,7 @@ public final class AnimationModel implements cs3500.animator.provider.model.IAni
    * @param loShape      The list of shapes that is going to be assigned in.
    * @param loOperations The list of operations that is going to be assigned in.
    *//*
+
 
   public AnimationModel(ArrayList<IShape> loShape, ArrayList<IAnimationOperations> loOperations) {
     ArrayList<IShape> loshape = new ArrayList<>();
@@ -88,13 +97,15 @@ public final class AnimationModel implements cs3500.animator.provider.model.IAni
     }
   }
 
-  */
+
+*/
 /**
    * Checks if two operations are overlap.
    *
    * @param command The compared operation.
    * @return true if two operations are overlap.
    *//*
+
 
   protected boolean overlapCommand(IAnimationOperations command) {
     boolean b = false;
@@ -136,20 +147,24 @@ public final class AnimationModel implements cs3500.animator.provider.model.IAni
   }
 
 
-  */
+
+*/
 /**
    * a final class called Builder. This class implements TweenModelBuilder for adding shapes and
    * operations from the file that is read to the model.
    *//*
 
+
   public static final class Builder implements TweenModelBuilder<cs3500.animator.model.IAnimationModel> {
     private ArrayList<IShape> loShape;
     private ArrayList<IAnimationOperations> loOperations;
 
-    */
+
+*/
 /**
      * Constructor of Builder. Initially, the fields are both an empty list.
      *//*
+
 
     public Builder() {
       this.loShape = new ArrayList<>();
@@ -162,7 +177,7 @@ public final class AnimationModel implements cs3500.animator.provider.model.IAni
                                                                             float xRadius, float yRadius, float red,
                                                                             float green, float blue, int startOfLife,
                                                                             int endOfLife) {
-      Oval newOval = new Oval(name, ShapeType.oval, new Posn(cx, cy), new Color(red, green, blue),
+      Oval newOval = new Oval(name, ShapeType.oval, new PosnAdapter(cx, cy), new ColorAdapter(red, green, blue),
               xRadius, yRadius, startOfLife, endOfLife);
       loShape.add(newOval);
 
@@ -174,8 +189,8 @@ public final class AnimationModel implements cs3500.animator.provider.model.IAni
                                                                                  float width, float height, float red,
                                                                                  float green, float blue, int startOfLife,
                                                                                  int endOfLife) {
-      Rectangle newRec = new Rectangle(name, ShapeType.rectangle, new Color(red, green, blue),
-              new Posn(lx, ly), width, height, startOfLife, endOfLife);
+      Rectangle newRec = new Rectangle(name, ShapeType.rectangle, new ColorAdapter(red, green, blue),
+              new PosnAdapter(lx, ly), width, height, startOfLife, endOfLife);
       loShape.add(newRec);
       return this;
     }
@@ -187,8 +202,8 @@ public final class AnimationModel implements cs3500.animator.provider.model.IAni
       for (IShape s : loShape) {
         if (s.getName().equals(name)) {
           MoveOperation newOperation = new MoveOperation(OperationType.move, s,
-                  new Posn(moveFromX, moveFromY),
-                  new Posn(moveToX, moveToY), startTime, endTime);
+                  new PosnAdapter(moveFromX, moveFromY),
+                  new PosnAdapter(moveToX, moveToY), startTime, endTime);
           loOperations.add(newOperation);
         }
       }
@@ -204,7 +219,7 @@ public final class AnimationModel implements cs3500.animator.provider.model.IAni
       for (IShape s : loShape) {
         if (s.getName().equals(name)) {
           ChangeColorOperation newOperation = new ChangeColorOperation(OperationType.changeColor, s,
-                  new Color(oldR, oldG, oldB), new Color(newR, newG, newB), startTime, endTime);
+                  new ColorAdapter(oldR, oldG, oldB), new ColorAdapter(newR, newG, newB), startTime, endTime);
           loOperations.add(newOperation);
         }
       }
@@ -236,4 +251,5 @@ public final class AnimationModel implements cs3500.animator.provider.model.IAni
   }
 
 }
+
 */

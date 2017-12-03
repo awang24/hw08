@@ -1,8 +1,6 @@
 package cs3500.animator.provider.model;
 
-/**
- * Interface for a color.
- */
+
 public interface IColor {
   /**
    * get the blue value of color.

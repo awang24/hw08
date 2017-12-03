@@ -1,27 +1,27 @@
-/*
+
 package cs3500.animator.provider.model;
 
 
-import cs3500.animator.model.shapeAdapter.Color;
-import cs3500.animator.model.shapeAdapter.Posn;
+import cs3500.animator.provider.model.Color;
+import cs3500.animator.provider.model.Posn;
 
-*/
+
 /**
  * This is a abstract Class which implements IShape. This class includes basic fields and methods
  * for Shape.
- *//*
+ */
 
 public abstract class AbstractShape implements IShape {
   private String name;
   private ShapeType shapeType;
-  private Color color;
-  private Posn posn;
+  private IColor color;
+  private IPosn posn;
   private int appearTime;
   private int disappearTime;
   private float x;
   private float y;
 
-  */
+
 /**
    * Constructor for AbstractShape.
    *
@@ -31,9 +31,9 @@ public abstract class AbstractShape implements IShape {
    * @param posn          the posn of the shape.
    * @param appearTime    the appear time of the shape.
    * @param disappearTime the disappear time of the shape.
-   *//*
+   */
 
-  public AbstractShape(String name, ShapeType shapeType, Color color, Posn posn, float x, float y,
+  public AbstractShape(String name, ShapeType shapeType, IColor color, IPosn posn, float x, float y,
                        int appearTime, int disappearTime) {
 
     if (disappearTime < appearTime) {
@@ -52,12 +52,12 @@ public abstract class AbstractShape implements IShape {
     this.disappearTime = disappearTime;
   }
 
-  */
+
 /**
    * copy constructor for Abstract shape.
    *
    * @param s the shape you want to copy.
-   *//*
+   */
 
   public AbstractShape(AbstractShape s) {
     this.name = s.name;
@@ -71,7 +71,7 @@ public abstract class AbstractShape implements IShape {
   }
 
   @Override
-  public Color getColor() {
+  public IColor getColor() {
     return new Color(color);
   }
 
@@ -117,12 +117,12 @@ public abstract class AbstractShape implements IShape {
   public abstract IShape getShape();
 
   @Override
-  public void updateColor(Color c) {
+  public void updateColor(IColor c) {
     this.setColor(c);
   }
 
   @Override
-  public void updatePosn(Posn p) {
+  public void updatePosn(IPosn p) {
     this.setPosn(p);
   }
 
@@ -133,13 +133,13 @@ public abstract class AbstractShape implements IShape {
   }
 
   @Override
-  public void setColor(Color color) {
+  public void setColor(IColor color) {
     this.color = color;
   }
 
 
   @Override
-  public void setPosn(Posn posn) {
+  public void setPosn(IPosn posn) {
     this.posn = posn;
   }
 
@@ -194,5 +194,6 @@ public abstract class AbstractShape implements IShape {
   }
 
 
+
 }
-*/
+

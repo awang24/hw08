@@ -1,7 +1,7 @@
 package cs3500.animator.provider.model;
 
-import cs3500.animator.model.shapeAdapter.Color;
-import cs3500.animator.model.shapeAdapter.Posn;
+import cs3500.animator.model.shapeAdapter.ColorAdapter;
+import cs3500.animator.model.shapeAdapter.PosnAdapter;
 
 /**
  * This is an abstract Class which implements IAnimationOperations. This class includes basic fields
@@ -132,17 +132,32 @@ public abstract class AbstractAnimationOperations implements IAnimationOperation
   }
 
   @Override
-  public Posn getDestPosn() {
+  public float getOldHeight() {
+    return -1;
+  }
+
+  @Override
+  public float getOldWidth() {
+    return -1;
+  }
+
+  @Override
+  public IPosn getDestPosn() {
     return null;
   }
 
   @Override
-  public Posn getSrcPosn() {
+  public IPosn getSrcPosn() {
     return null;
   }
 
   @Override
-  public Color getNewColor() {
+  public IColor getNewColor() {
+    return null;
+  }
+
+  @Override
+  public IColor getOldColor() {
     return null;
   }
 }

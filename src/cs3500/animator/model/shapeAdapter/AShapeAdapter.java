@@ -1,6 +1,8 @@
 package cs3500.animator.model.shapeAdapter;
 
 import cs3500.animator.model.shape.Shapes;
+import cs3500.animator.provider.model.IColor;
+import cs3500.animator.provider.model.IPosn;
 import cs3500.animator.provider.model.IShape;
 import cs3500.animator.provider.model.ShapeType;
 
@@ -12,8 +14,8 @@ public abstract class AShapeAdapter implements IShape{
   }
 
   @Override
-  public Color getColor() {
-    return new Color(this.aShape.getColor());
+  public ColorAdapter getColor() {
+    return new ColorAdapter(this.aShape.getColor());
   }
 
   @Override
@@ -27,8 +29,8 @@ public abstract class AShapeAdapter implements IShape{
   }
 
   @Override
-  public Posn getPosn() {
-    return new Posn(this.aShape.getPosn().getX(), this.aShape.getPosn().getY());
+  public PosnAdapter getPosn() {
+    return new PosnAdapter(this.aShape.getPosn().getX(), this.aShape.getPosn().getY());
   }
 
   @Override
@@ -37,13 +39,7 @@ public abstract class AShapeAdapter implements IShape{
   }
 
   @Override
-  public ShapeType getShapeType() {
-    if (this.aShape.getShapeType().equals(cs3500.animator.model.shape.ShapeType.RECTANGLE)) {
-      return ShapeType.rectangle;
-    } else {
-      return ShapeType.oval;
-    }
-  }
+  public abstract ShapeType getShapeType();
 
   @Override
   public float getX() {
@@ -56,18 +52,20 @@ public abstract class AShapeAdapter implements IShape{
   }
 
   @Override
-  public abstract String toString(int tempo);
+  public String toString(int tempo) {
+    return this.aShape.toString();
+  }
 
   @Override
   public abstract IShape getShape();
 
   @Override
-  public void updateColor(Color c) {
+  public void updateColor(IColor c) {
     this.setColor(c);
   }
 
   @Override
-  public void updatePosn(Posn p) {
+  public void updatePosn(IPosn p) {
     this.setPosn(p);
   }
 
@@ -78,24 +76,18 @@ public abstract class AShapeAdapter implements IShape{
   }
 
   @Override
-  public void setColor(Color color) {
+  public void setColor(IColor color) {
     java.awt.Color c = new java.awt.Color(color.getRed(), color.getGreen(), color.getBlue());
     this.aShape.setColor(c);
   }
 
 
   @Override
-  public void setPosn(Posn posn) {
+  public void setPosn(IPosn posn) {
     cs3500.animator.model.shape.Posn p =
             new cs3500.animator.model.shape.Posn(posn.getX(), posn.getY());
     this.aShape.setPosn(p);
   }
-
-  @Override
-  public IShape getShapeForOperation() {
-    return this;
-  }
-
 
   @Override
   public void setX(float x) {
@@ -108,7 +100,9 @@ public abstract class AShapeAdapter implements IShape{
   }
 
   @Override
-  public abstract String svgState(int tempo, boolean loop);
+  public String svgState(int tempo, boolean loop) {
+    return this.aShape.toSVGTag();
+  }
 
   @Override
   public String svgStateForLoop(int tempo, boolean loop) {
@@ -118,5 +112,15 @@ public abstract class AShapeAdapter implements IShape{
   @Override
   public String svgFront() {
     return "";//"    <animate attributeType=\"xml\" begin=\"base.end\" dur=\"100ms\" ";
+  }
+
+  @Override
+  public String svgReset(boolean loop) {
+    return "";
+  }
+
+  @Override
+  public IShape copyShape() {
+    return this.getShapeForOperation();
   }
 }

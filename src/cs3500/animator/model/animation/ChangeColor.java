@@ -108,4 +108,14 @@ public class ChangeColor extends AAnimations {
 
     return tag;
   }
+
+  @Override
+  public Color getOldColor() {
+    return this.origin;
+  }
+
+  @Override
+  public Color getNewColor() {
+    return this.dest;
+  }
 }

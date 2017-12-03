@@ -51,8 +51,8 @@ public class AnimationPanel extends JPanel {
         Color c = s.getColor();
         if (s.getShapeType().equals(ShapeType.OVAL)) {
           g2d.setColor(c);
-          g2d.fillOval(x, y, d1, d2);
-          g2d.drawOval(x, y, d1, d2);
+          g2d.fillOval(x, y, d1 * 2, d2 * 2);
+          g2d.drawOval(x, y, d1 * 2, d2 * 2);
         } else if (s.getShapeType().equals(ShapeType.RECTANGLE)) {
           g2d.setColor(c);
           g2d.fillRect(x, y, d1, d2);

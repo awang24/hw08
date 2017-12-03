@@ -16,7 +16,7 @@ public class Oval extends AShape {
    * @param appear    Time when shape appears
    * @param disappear Time when shape disappears
    * @param p         Coordinate of shape
-   * @param c         Color of shape
+   * @param c         ColorAdapter of shape
    * @param x         X radius of oval
    * @param y         Y radius of oval
    * @throws IllegalArgumentException if x or y are negative

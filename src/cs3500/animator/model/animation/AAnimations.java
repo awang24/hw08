@@ -1,5 +1,8 @@
 package cs3500.animator.model.animation;
 
+import java.awt.*;
+
+import cs3500.animator.model.shape.Posn;
 import cs3500.animator.model.shape.Shapes;
 import cs3500.animator.model.Utils;
 
@@ -66,6 +69,46 @@ public abstract class AAnimations implements Animations {
   @Override
   public void setShape(Shapes s) {
     this.shape = s;
+  }
+
+  @Override
+  public double getOriginalD1() {
+    return -1;
+  }
+
+  @Override
+  public double getOriginalD2() {
+    return -1;
+  }
+
+  @Override
+  public double getNewD1() {
+    return -1;
+  }
+
+  @Override
+  public double getNewD2() {
+    return -1;
+  }
+
+  @Override
+  public Color getOldColor() {
+    return null;
+  }
+
+  @Override
+  public Color getNewColor() {
+    return null;
+  }
+
+  @Override
+  public Posn getOldP() {
+    return null;
+  }
+
+  @Override
+  public Posn getNewP() {
+    return null;
   }
 
 }

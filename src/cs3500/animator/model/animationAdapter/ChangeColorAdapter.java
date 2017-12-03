@@ -1,23 +1,20 @@
 package cs3500.animator.model.animationAdapter;
 
+import java.awt.*;
+
+import cs3500.animator.model.Utils;
 import cs3500.animator.model.animation.Animations;
 import cs3500.animator.model.animation.ChangeColor;
-import cs3500.animator.model.animationAdapter.AbstractAnimationAdapter;
-import cs3500.animator.model.shape.ShapeType;
+import cs3500.animator.model.shape.CreateShapeVisitor;
 import cs3500.animator.model.shape.Shapes;
-import cs3500.animator.model.shapeAdapter.Color;
-import cs3500.animator.model.shapeAdapter.OvalAdapter;
-import cs3500.animator.model.shapeAdapter.RectangleAdapter;
+import cs3500.animator.provider.model.ChangeColorOperation;
 import cs3500.animator.provider.model.IAnimationOperations;
-import cs3500.animator.provider.model.IShape;
 import cs3500.animator.provider.model.OperationType;
-import cs3500.animator.model.shapeAdapter.Posn;
 
 public class ChangeColorAdapter extends AbstractAnimationAdapter {
 
-  private ChangeColor cc;
-  private IShape shape;
-
+  private Shapes s;
+  private Animations c;
   /**
    * Constructor for adapter for change color.
    *
@@ -25,48 +22,29 @@ public class ChangeColorAdapter extends AbstractAnimationAdapter {
    */
   public ChangeColorAdapter(Animations cc) {
     super(cc);
-    this.cc = (ChangeColor) cc;
-
-    Shapes s = this.cc.getShape();
-    if (s.getShapeType().equals(ShapeType.RECTANGLE)) {
-      this.shape = new RectangleAdapter(s);
-    } else if (s.getShapeType().equals(ShapeType.OVAL)) {
-      this.shape = new OvalAdapter(s);
-    }
+    this.c = cc;
+    this.s = cc.getShape();
   }
 
   @Override
-  public String toString(int tempo) {
-    return cc.toString();
-  }
-
-  @Override
-  public void updateShape(IShape s, int time) {
-
-  }
-
-  @Override
-  public IShape getShape() {
-    return this.shape;
-  }
-
-  @Override
-  public IShape getShapeForOperation() {
-    return this.shape.getShapeForOperation();
+  public OperationType getType() {
+    return OperationType.changeColor;
   }
 
   @Override
   public IAnimationOperations getOperation() {
-    return this;
+    return copyOperation();
   }
 
   @Override
-  public String svgState(int tempo, boolean loop) {
-    if (loop) {
-      return this.cc.toSVGTagWithLoop(tempo);
-    } else {
-      return this.cc.toSVGTag(tempo);
-    }
+  public IAnimationOperations copyOperation() {
+    Shapes newShape = this.s.accept(new CreateShapeVisitor());
+    Color c1 = new Color(this.c.getOldColor().getRed(), this.c.getOldColor().getGreen(),
+            this.c.getOldColor().getBlue());
+    Color c2 = new Color(this.c.getNewColor().getRed(), this.c.getNewColor().getGreen(),
+            this.c.getNewColor().getBlue());
+    ChangeColor c = new ChangeColor(newShape, this.c.getStart(), this.c.getEnd(), c1, c2);
+    return new ChangeColorAdapter(c);
   }
 
 }

@@ -30,7 +30,7 @@ public interface IAnimationModel {
   /**
    * Return the present state of the animation as a string. The string is formatted as follows:
    * Shapes:[n] Name: String representing name of shape[n] Type: Type of shape[n] Location: ,
-   * Dimensions: , Color: (double, double, double) [n] Appears at t=int [n] Disappears at t=int
+   * Dimensions: , ColorAdapter: (double, double, double) [n] Appears at t=int [n] Disappears at t=int
    * [n][n] ... Lists out all shapes Animations from original state to new state from appear time to
    * disappear time [n] ... Lists out all animations [n] is a new line
    *

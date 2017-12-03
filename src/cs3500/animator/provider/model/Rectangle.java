@@ -1,27 +1,25 @@
-/*
+
 package cs3500.animator.provider.model;
 
-*/
+
 /**
  * We changed the toString() to toSring(int tempo) because the view takes a tempo to make the speed
  * change.
- *//*
+ */
+
+import cs3500.animator.model.shapeAdapter.ColorAdapter;
+import cs3500.animator.model.shapeAdapter.PosnAdapter;
 
 
-
-import cs3500.animator.model.shapeAdapter.Color;
-import cs3500.animator.model.shapeAdapter.Posn;
-
-*/
 /**
  * This is a Rectangle Class extends AbstractShape. It represents a rectangle that has width and
  * height.
- *//*
+ */
 
 public class Rectangle extends AbstractShape {
 
 
-  */
+
 /**
    * Constructor for a Rectangle.
    *
@@ -33,20 +31,20 @@ public class Rectangle extends AbstractShape {
    * @param y             the height of the oval.
    * @param appearTime    the appear time of the oval.
    * @param disappearTime the disappear time of the oval.
-   *//*
+   */
 
-  public Rectangle(String name, ShapeType shapeType, Color color, Posn posn, float x, float y,
+  public Rectangle(String name, ShapeType shapeType, IColor color, IPosn posn, float x, float y,
                    int appearTime, int disappearTime) {
     super(name, shapeType, color, posn, x, y, appearTime, disappearTime);
 
   }
 
-  */
+
 /**
    * constructor for rectangle. This is for copy the data of this class.
    *
    * @param r the rectangle that we want to copy.
-   *//*
+   */
 
   public Rectangle(Rectangle r) {
     super(r.getName(), r.getShapeType(), r.getColor(), r.getPosn(), r.getX(), r.getY(),
@@ -61,7 +59,7 @@ public class Rectangle extends AbstractShape {
             + "Lower-left corner: " + this.getPosn().toString() + ", "
             + "Width: " + this.getX() + ", "
             + "Height: " + this.getY() + ", "
-            + "Color: (" + this.getColor().getRed() + ","
+            + "ColorAdapter: (" + this.getColor().getRed() + ","
             + this.getColor().getGreen() + "," + this.getColor().getBlue() + ")" + "\n"
             + "Appears at t=" + this.getAppearTime() / tempo + "s\n"
             + "Disappears at t=" + this.getDisappearTime() / tempo + "s";
@@ -110,5 +108,10 @@ public class Rectangle extends AbstractShape {
     }
   }
 
+  @Override
+  public IShape copyShape() {
+    return new Rectangle(this);
+  }
+
 }
-*/
+

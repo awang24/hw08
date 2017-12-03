@@ -1,8 +1,5 @@
 package cs3500.animator.provider.model;
 
-/**
- * Represents a posn.
- */
 
 public interface IPosn {
   /**

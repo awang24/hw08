@@ -1,5 +1,8 @@
 package cs3500.animator.model.animation;
 
+import java.awt.*;
+
+import cs3500.animator.model.shape.Posn;
 import cs3500.animator.model.shape.Shapes;
 
 /**
@@ -97,5 +100,54 @@ public interface Animations {
    * @return svg tag string representation of the animation when there's a loop
    */
   String toSVGTagWithLoop(double tempo);
+
+  /**
+   * Returns original x dimension.
+   * @return original x dimension
+   */
+  double getOriginalD1();
+
+  /**
+   * Returns original y dimension.
+   * @return original y dimension
+   */
+  double getOriginalD2();
+
+  /**
+   * Returns new x dimension.
+   * @return new x dimension
+   */
+  double getNewD1();
+
+  /**
+   * Returns new y dimension.
+   * @return new y dimension
+   */
+  double getNewD2();
+
+  /**
+   * Returns old color.
+   * @return old color
+   */
+  Color getOldColor();
+
+  /**
+   * Returns new color.
+   * @return new color
+   */
+  Color getNewColor();
+
+  /**
+   * Returns old posn.
+   * @return old posn
+   */
+  Posn getOldP();
+
+  /**
+   * Returns new posn.
+   * @return new posn
+   */
+  Posn getNewP();
+
 
 }

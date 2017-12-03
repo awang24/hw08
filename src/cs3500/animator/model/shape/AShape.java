@@ -27,7 +27,7 @@ public abstract class AShape implements Shapes {
    * @param appear    Time when shape appears
    * @param disappear Time when shape disappears
    * @param p         Coordinate of shape
-   * @param c         Color of shape
+   * @param c         ColorAdapter of shape
    * @throws IllegalArgumentException if either time is negative, if the dimensions are negative or
    *                                  if the disappear time comes before the appear time
    */
@@ -55,7 +55,7 @@ public abstract class AShape implements Shapes {
   public String getState() {
     return "Name: " + this.name + "\n" + "Type: " + this.type.toString() + "\n"
             + this.location() + ", "
-            + this.getDimensions() + ", Color: "
+            + this.getDimensions() + ", ColorAdapter: "
             + Utils.getColorString(this.c) + "\n"
             + "Appears at t=" + appear + "\n" + "Disappears at t=" + disappear + "\n";
   }

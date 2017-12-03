@@ -1,3 +1,4 @@
+
 package cs3500.animator.provider.model;
 
 /**
@@ -7,18 +8,19 @@ package cs3500.animator.provider.model;
  */
 
 
-import cs3500.animator.model.shapeAdapter.Posn;
 
 /**
  * This is a MoveOperation Class extends AbstractAnimationOperations. It enables user to move a
  * shape in the list.
  */
+
 public class MoveOperation extends AbstractAnimationOperations {
-  private Posn srcPosn;
-  private Posn destPosn;
+  private IPosn srcPosn;
+  private IPosn destPosn;
 
 
-  /**
+
+/**
    * Constructor for ChangeColorOperation.
    *
    * @param shape     the shape that the operation is going to operate on.
@@ -26,18 +28,21 @@ public class MoveOperation extends AbstractAnimationOperations {
    * @param startTime the start time of operation.
    * @param endTime   the end time of operation.
    */
-  public MoveOperation(OperationType type, IShape shape, Posn srcPosn, Posn destPosn,
+
+  public MoveOperation(OperationType type, IShape shape, IPosn srcPosn, IPosn destPosn,
                        int startTime, int endTime) {
     super(type, shape, startTime, endTime);
     this.srcPosn = srcPosn;
     this.destPosn = destPosn;
   }
 
-  /**
+
+/**
    * Constructor for ChangeColorOperation. This is for copy the data of this class.
    *
    * @param m The MoveOperation you want to copy from.
    */
+
   public MoveOperation(MoveOperation m) {
     super(m.getType(), m.getShape(), m.getStartTime(), m.getEndTime());
     this.destPosn = m.getDestPosn();
@@ -61,7 +66,7 @@ public class MoveOperation extends AbstractAnimationOperations {
               getDestPosn().getX(), getStartTime(), getEndTime());
       float y = getCurrentState(time, srcPosn.getY(),//getShape().getPosn().getY(),
               getDestPosn().getY(), getStartTime(), getEndTime());
-      Posn newPosn = new Posn(x, y);
+      IPosn newPosn = new Posn(x, y);
       s.updatePosn(newPosn);
     }
   }
@@ -134,15 +139,23 @@ public class MoveOperation extends AbstractAnimationOperations {
     return s;
   }
 
+  @Override
+  public IAnimationOperations copyOperation() {
+    return new MoveOperation(this);
+  }
+
 
   @Override
-  public Posn getDestPosn() {
+  public IPosn getDestPosn() {
     return new Posn(destPosn);
   }
 
 
   @Override
-  public Posn getSrcPosn() {
+  public IPosn getSrcPosn() {
     return new Posn(srcPosn);
   }
+
+
 }
+

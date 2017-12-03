@@ -1,24 +1,23 @@
-/*
+
 package cs3500.animator.provider.model;
 
-*/
+
 /**
  * We changed the toString() to toSring(int tempo) because the view takes a tempo to make the speed
  * change.
- *//*
+ */
 
 
-import cs3500.animator.model.shapeAdapter.Color;
-import cs3500.animator.model.shapeAdapter.Posn;
+import cs3500.animator.model.shapeAdapter.ColorAdapter;
+import cs3500.animator.model.shapeAdapter.PosnAdapter;
 
-*/
+
 /**
  * This is a Oval Class extends AbstractShape. It represents a oval that has a xRadius and yRadius.
- *//*
+ */
 
 public class Oval extends AbstractShape {
 
-  */
 /**
    * Constructor for a Oval.
    *
@@ -30,21 +29,21 @@ public class Oval extends AbstractShape {
    * @param y             the yRadius of the oval.
    * @param appearTime    the appear time of the oval.
    * @param disappearTime the disappear time of the oval.
-   *//*
+   */
 
-  public Oval(String name, ShapeType shapeType, Posn posn,
-              Color color, float x, float y,
+  public Oval(String name, ShapeType shapeType, IPosn posn,
+              IColor color, float x, float y,
               int appearTime, int disappearTime) {
     super(name, shapeType, color, posn, x, y, appearTime, disappearTime);
   }
 
 
-  */
+
 /**
    * constructor for oval. This is to copy the data of this class.
    *
    * @param o the oval you want to copy.
-   *//*
+   */
 
   public Oval(Oval o) {
     super(o.getName(), o.getShapeType(), o.getColor(), o.getPosn(),
@@ -59,7 +58,7 @@ public class Oval extends AbstractShape {
             + "Center: " + this.getPosn().toString() + ", "
             + "X radius: " + this.getX() + ", "
             + "Y radius: " + this.getY() + ", "
-            + "Color: (" + this.getColor().getRed() + ","
+            + "ColorAdapter: (" + this.getColor().getRed() + ","
             + this.getColor().getGreen() + "," + this.getColor().getBlue() + ")" + "\n"
             + "Appears at t=" + this.getAppearTime() / tempo + "s\n"
             + "Disappears at t=" + this.getDisappearTime() / tempo + "s";
@@ -107,5 +106,10 @@ public class Oval extends AbstractShape {
     }
   }
 
+  @Override
+  public IShape copyShape() {
+    return new Oval(this);
+  }
+
 }
-*/
+

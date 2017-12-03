@@ -135,4 +135,24 @@ public class ChangeDimension extends AAnimations {
 
     return svg;
   }
+
+  @Override
+  public double getOriginalD1() {
+    return this.originalD1;
+  }
+
+  @Override
+  public double getOriginalD2() {
+    return this.originalD2;
+  }
+
+  @Override
+  public double getNewD1() {
+    return this.newD1;
+  }
+
+  @Override
+  public double getNewD2() {
+    return this.newD2;
+  }
 }

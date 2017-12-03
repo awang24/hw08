@@ -12,7 +12,7 @@ import cs3500.animator.model.animation.MoveAnimation;
 import cs3500.animator.model.shape.CreateShapeVisitor;
 import cs3500.animator.model.shape.Oval;
 import cs3500.animator.model.shape.Posn;
-import cs3500.animator.model.shape.RectangleShape;
+import cs3500.animator.model.shape.Rectangle;
 import cs3500.animator.model.shape.Shapes;
 import cs3500.animator.starter.TweenModelBuilder;
 
@@ -160,7 +160,7 @@ public class SimpleAnimationModel implements IAnimationModel {
             int startOfLife, int endOfLife) {
       Posn p = new Posn(lx, ly);
       Color c = new Color(red, green, blue);
-      Shapes shape = new RectangleShape(name, startOfLife, endOfLife, p, c, width, height);
+      Shapes shape = new Rectangle(name, startOfLife, endOfLife, p, c, width, height);
       listShapes.add(shape);
       return this;
     }

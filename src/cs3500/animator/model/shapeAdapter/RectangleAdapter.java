@@ -1,15 +1,19 @@
 package cs3500.animator.model.shapeAdapter;
 
-import cs3500.animator.model.shape.RectangleShape;
+import java.awt.*;
+
+import cs3500.animator.model.shape.Posn;
+import cs3500.animator.model.shape.Rectangle;
 import cs3500.animator.model.shape.Shapes;
 import cs3500.animator.provider.model.IShape;
+import cs3500.animator.provider.model.ShapeType;
 
 /**
  * Represents the adapter class for converting our rectangle to the provider's rectangle.
  */
 public class RectangleAdapter extends AShapeAdapter {
 
-  private RectangleShape rect;
+  //private Rectangle rect;
 
   /**
    * Constructor for RectangleAdapter.
@@ -18,12 +22,12 @@ public class RectangleAdapter extends AShapeAdapter {
    */
   public RectangleAdapter(Shapes rect) {
     super(rect);
-    this.rect = (RectangleShape)rect;
+    //this.rect = (Rectangle)rect;
   }
 
   @Override
-  public String toString(int tempo) {
-    return rect.toString();
+  public ShapeType getShapeType() {
+    return ShapeType.rectangle;
   }
 
   @Override
@@ -32,12 +36,13 @@ public class RectangleAdapter extends AShapeAdapter {
   }
 
   @Override
-  public String svgState(int tempo, boolean loop) {
-    return rect.toSVGTag();
+  public IShape getShapeForOperation() {
+    Posn p = new Posn(this.getPosn().getX(), this.getPosn().getY());
+    Color c = new Color(this.getColor().getRed(), this.getColor().getGreen(),
+            this.getColor().getBlue());
+    Shapes rect = new Rectangle(this.getName(), this.getAppearTime(), this.getDisappearTime(), p,
+            c, this.getX(), this.getY());
+    return new RectangleAdapter(rect);
   }
 
-  @Override
-  public String svgReset(boolean loop) {
-    return "";
-  }
 }

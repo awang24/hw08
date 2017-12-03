@@ -5,8 +5,8 @@ package cs3500.animator.provider.model;
  * file based on the current loop status.
  */
 
-import cs3500.animator.model.shapeAdapter.Color;
-import cs3500.animator.model.shapeAdapter.Posn;
+import cs3500.animator.model.shapeAdapter.ColorAdapter;
+import cs3500.animator.model.shapeAdapter.PosnAdapter;
 
 /**
  * This is the interface of the AnimationOperations. It includes all the basic functions needed for
@@ -84,14 +84,14 @@ public interface IAnimationOperations extends Comparable<IAnimationOperations> {
    * getter for destination posn.
    * @return the destination posn.
    */
-  Posn getDestPosn();
+  IPosn getDestPosn();
 
   /**
    * Getter of the source position.
    *
    * @return the source position.
    */
-  Posn getSrcPosn();
+  IPosn getSrcPosn();
 
   /**
    * getter of the changed Height.
@@ -106,6 +106,18 @@ public interface IAnimationOperations extends Comparable<IAnimationOperations> {
   float getChangedWidth();
 
   /**
+   * getter of the old Height.
+   * @return the old height
+   */
+  float getOldHeight();
+
+  /**
+   * getter of the old width.
+   * @return the old width.
+   */
+  float getOldWidth();
+
+  /**
    * getter for operation.
    *
    * @return a copy of the operation.
@@ -114,11 +126,18 @@ public interface IAnimationOperations extends Comparable<IAnimationOperations> {
 
 
   /**
-   * Get the new Color.
+   * Get the new color.
    *
    * @return the newColor.
    */
-  Color getNewColor();
+  IColor getNewColor();
+
+  /**
+   * Get the old color.
+   *
+   * @return the oldColor.
+   */
+  IColor getOldColor();
 
 
   /**
@@ -136,4 +155,10 @@ public interface IAnimationOperations extends Comparable<IAnimationOperations> {
    * @return the shape of the operation.
    */
   IShape getShapeForOperation();
+
+  /**
+   * copy the operation.
+   * @return a copy of operation.
+   */
+  IAnimationOperations copyOperation();
 }

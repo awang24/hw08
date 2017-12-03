@@ -94,4 +94,9 @@ public class VisualController implements IAnimationController {
   public Timer getTimer() {
     throw new UnsupportedOperationException("Controller does not support this functionality");
   }
+
+  @Override
+  public double getTempo() {
+    return this.tempo;
+  }
 }

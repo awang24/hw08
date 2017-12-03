@@ -1,16 +1,20 @@
-package cs3500.animator.view;
+/*
+package cs3500.animator.viewAdapter;
 
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JFrame;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 
+import cs3500.animator.model.Utils;
 import cs3500.animator.model.animation.Animations;
 import cs3500.animator.model.shape.Shapes;
+import cs3500.animator.provider.model.IAnimationOperations;
+import cs3500.animator.provider.model.IShape;
 import cs3500.animator.provider.view.HybridView;
+import cs3500.animator.view.IView;
 
 public class ProviderInteractiveViewToIViewAdapt implements IView {
 
@@ -21,22 +25,29 @@ public class ProviderInteractiveViewToIViewAdapt implements IView {
   private List<Animations> animations;
   private int lastTime;
 
-  /**
+  */
+/**
    * The Constructor of HybridView.
    *
    * @param tempo The tempo of the animation.
-   */
-  public ProviderInteractiveViewToIViewAdapt(int tempo , List<Shapes> shapes,
+   *//*
+
+  public ProviderInteractiveViewToIViewAdapt(int tempo, List<Shapes> shapes,
                                              List<Animations> animations, int lastTime) {
     this.view = new HybridView(tempo);
-    this.view.addShapesToCheckBox();
-    //this.view.setOperations(animations);
     this.isLoop = false;
     this.isPlaying = true;
     this.shapes = shapes;
     this.animations = animations;
     this.lastTime = lastTime;
+
+    //this.view.
+    this.view.setShapes(Utils.convertShapes(this.shapes));
+    this.view.setOperations(Utils.convertAnimations(this.animations));
+    this.view.addShapesToCheckBox();
   }
+
+
 
   @Override
   public String getDescription() {
@@ -115,3 +126,4 @@ public class ProviderInteractiveViewToIViewAdapt implements IView {
     return this.isLoop;
   }
 }
+*/

@@ -31,5 +31,13 @@ public interface IAnimationController {
    */
   Timer getTimer();
 
+  /**
+   * Retrieves the tempo of the controller.
+   * @return tempo used by controller
+   * @throws UnsupportedOperationException Throws exception if the controller does not support the
+   *                                       functionality
+   */
+  double getTempo();
+
 
 }

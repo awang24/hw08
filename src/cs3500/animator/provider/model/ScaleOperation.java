@@ -1,3 +1,4 @@
+
 package cs3500.animator.provider.model;
 
 /**
@@ -9,17 +10,20 @@ package cs3500.animator.provider.model;
  */
 
 
+
 /**
  * This is a ScaleOperation Class extends AbstractAnimationOperations. It enables user to change the
  * size of the shape in the list.
  */
+
 public class ScaleOperation extends AbstractAnimationOperations {
   private float oldWidth;
   private float oldHeight;
   private float changedWidth;
   private float changedHeight;
 
-  /**
+
+/**
    * Constructor for ScaleOperation.
    *
    * @param shape         the shape that the operation is going to operate on.
@@ -28,6 +32,7 @@ public class ScaleOperation extends AbstractAnimationOperations {
    * @param startTime     the start time of operation.
    * @param endTime       the end time of operation.
    */
+
   public ScaleOperation(OperationType type, IShape shape, float oldWidth, float oldHeight,
                         float changedWidth, float changedHeight,
                         int startTime, int endTime) {
@@ -38,11 +43,13 @@ public class ScaleOperation extends AbstractAnimationOperations {
     this.changedHeight = changedHeight;
   }
 
-  /**
+
+/**
    * Constructor for ScaleOperation. This is for copy the data of this class.
    *
    * @param s The ScaleOperation that is going to be copied
    */
+
   public ScaleOperation(ScaleOperation s) {
     super(s.getType(), s.getShape(), s.getStartTime(), s.getEndTime());
     this.oldWidth = s.oldWidth;
@@ -141,6 +148,11 @@ public class ScaleOperation extends AbstractAnimationOperations {
     return s;
   }
 
+  @Override
+  public IAnimationOperations copyOperation() {
+    return new ScaleOperation(this);
+  }
+
 
   @Override
   public float getChangedHeight() {
@@ -153,3 +165,4 @@ public class ScaleOperation extends AbstractAnimationOperations {
     return changedWidth;
   }
 }
+

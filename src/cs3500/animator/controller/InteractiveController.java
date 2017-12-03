@@ -110,7 +110,9 @@ public class InteractiveController implements IAnimationController, ActionListen
 
       unitsElapsed += tempo / 1000;
 
+      System.out.println("got here-time: " + lastTime + " units elapsed " + unitsElapsed);
       if (isLoop && (lastTime - unitsElapsed < 0.000001)) {
+        System.out.println("last time " + lastTime);
         unitsElapsed = 0;
 
         timer.restart();
@@ -123,12 +125,24 @@ public class InteractiveController implements IAnimationController, ActionListen
           Shapes newShape = shapes.get(i).accept(new CreateShapeVisitor());
           newListShapes.add(newShape);
         }
+        System.out.println("got here last time: " + lastTime + " units elapsed " + unitsElapsed);
 
       } else if (lastTime - unitsElapsed < 0.000001) {
         timer.stop();
       }
 
       List<Animations> animations = model.getAnimations();
+
+      for (int i = 0; i < animations.size(); i++) {
+        Animations currentAnimation = animations.get(i);
+        Shapes animationShape = currentAnimation.getShape();
+        for (int j = 0; j < newListShapes.size(); j++) {
+          Shapes currentShape = newListShapes.get(j);
+          if (currentShape.getName().equals(animationShape.getName())) {
+            currentAnimation.setShape(currentShape);
+          }
+        }
+      }
 
       for (int i = 0; i < animations.size(); i++) {
         Animations current = animations.get(i);
@@ -176,7 +190,7 @@ public class InteractiveController implements IAnimationController, ActionListen
       case "INCREASE SPEED":
         this.appendLog("Increase Speed Button hit. \n");
         this.enableBoxes(false);
-        tempo += 5;
+        tempo += 10;
         unitsElapsed -= (tempo) / 1000;
         break;
       case "DECREASE SPEED":
@@ -185,7 +199,7 @@ public class InteractiveController implements IAnimationController, ActionListen
         if (tempo <= 0) {
           tempo = 0;
         } else {
-          tempo -= 5;
+          tempo -= 10;
         }
         unitsElapsed += (tempo) / 1000;
         break;
@@ -286,6 +300,11 @@ public class InteractiveController implements IAnimationController, ActionListen
   @Override
   public Timer getTimer() {
     return this.timer;
+  }
+
+  @Override
+  public double getTempo() {
+    return this.tempo;
   }
 
 

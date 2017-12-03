@@ -8,7 +8,7 @@ public class Posn {
   private double y;
 
   /**
-   * Constructs a {@code Posn} object.
+   * Constructs a {@code PosnAdapter} object.
    *
    * @param x x coordinate of the position
    * @param y y coordinate of the position

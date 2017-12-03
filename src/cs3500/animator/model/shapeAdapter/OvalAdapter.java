@@ -1,15 +1,19 @@
 package cs3500.animator.model.shapeAdapter;
 
+import java.awt.*;
+
 import cs3500.animator.model.shape.Oval;
+import cs3500.animator.model.shape.Posn;
 import cs3500.animator.model.shape.Shapes;
 import cs3500.animator.provider.model.IShape;
+import cs3500.animator.provider.model.ShapeType;
 
 /**
  * Represents the adapter class for converting our rectangle to the provider's rectangle.
  */
 public class OvalAdapter extends AShapeAdapter {
 
-  private Oval oval;
+  //private Oval oval;
 
   /**
    * Constructor for OvalAdapter.
@@ -18,12 +22,12 @@ public class OvalAdapter extends AShapeAdapter {
    */
   public OvalAdapter(Shapes oval) {
     super(oval);
-    this.oval = (Oval)oval;
+    //this.oval = (Oval)oval;
   }
 
   @Override
-  public String toString(int tempo) {
-    return oval.toString();
+  public ShapeType getShapeType() {
+    return ShapeType.oval;
   }
 
   @Override
@@ -32,12 +36,10 @@ public class OvalAdapter extends AShapeAdapter {
   }
 
   @Override
-  public String svgState(int tempo, boolean loop) {
-    return oval.toSVGTag();
-  }
-
-  @Override
-  public String svgReset(boolean loop) {
-    return "";
+  public IShape getShapeForOperation() {
+    Posn p = new Posn(this.getPosn().getX(), this.getPosn().getY());
+    Color c = new Color(this.getColor().getRed(), this.getColor().getGreen(), this.getColor().getBlue());
+    Shapes oval = new Oval(this.getName(), this.getAppearTime(), this.getDisappearTime(), p, c, this.getX(), this.getY());
+    return new OvalAdapter(oval);
   }
 }

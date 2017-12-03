@@ -1,53 +1,42 @@
-/*
 package cs3500.animator.provider.model;
 
-*/
 /**
  * HW6 We changed the toString() to toSring(int tempo) because the view takes a tempo to make the
  * speed change. For the SVGView, we add SVGState to get the SVG string for this operation. We also
  * added updateShape method for update the shape based on the time passing from view. <p></p> HW7 We
  * changed getNewColor to override since this is an implemented class, it shouldn't have a
  * independent public method.
- *//*
+ */
 
 
-
-import cs3500.animator.model.shapeAdapter.Color;
-
-*/
 /**
  * This is a ChangeColorOperation Class extends AbstractAnimationOperations. It enables user to
  * change the color of the shape in the list.
- *//*
-
+ */
 public class ChangeColorOperation extends AbstractAnimationOperations {
-  private Color oldColor;
-  private Color newColor;
+  private IColor oldColor;
+  private IColor newColor;
 
-  */
-/**
+  /**
    * Constructor for ChangeColorOperation.
    *
    * @param shape     the shape that the operation is going to operate on.
    * @param newColor  the new color that the shape is going to change into.
    * @param startTime the start time of operation.
    * @param endTime   the end time of operation.
-   *//*
-
-  public ChangeColorOperation(OperationType type, IShape shape, Color oldColor, Color newColor,
+   */
+  public ChangeColorOperation(OperationType type, IShape shape, IColor oldColor, IColor newColor,
                               int startTime, int endTime) {
     super(type, shape, startTime, endTime);
     this.oldColor = oldColor;
     this.newColor = newColor;
   }
 
-  */
-/**
+  /**
    * Constructor for ChangeColorOperation. This is for copy the data of this class.
    *
    * @param o The ChangeColorOperation that is going to be copied
-   *//*
-
+   */
   public ChangeColorOperation(ChangeColorOperation o) {
     super(o.getType(), o.getShape(), o.getStartTime(), o.getEndTime());
     this.oldColor = new Color(o.oldColor);
@@ -83,8 +72,13 @@ public class ChangeColorOperation extends AbstractAnimationOperations {
 
 
   @Override
-  public Color getNewColor() {
+  public IColor getNewColor() {
     return new Color(newColor);
+  }
+
+  @Override
+  public IColor getOldColor() {
+    return new Color(oldColor);
   }
 
   @Override
@@ -121,5 +115,9 @@ public class ChangeColorOperation extends AbstractAnimationOperations {
 
 
   }
+
+  @Override
+  public IAnimationOperations copyOperation() {
+    return new ChangeColorOperation(this);
+  }
 }
-*/

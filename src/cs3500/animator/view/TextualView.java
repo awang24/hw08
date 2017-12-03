@@ -115,7 +115,7 @@ public class TextualView implements IView {
       current += "Name: " + currentShape.getName() + "\n" + "Type: "
               + currentShape.getShapeType().toString() + "\n"
               + currentShape.location() + ", "
-              + currentShape.getDimensions() + ", Color: "
+              + currentShape.getDimensions() + ", ColorAdapter: "
               + Utils.getColorString(currentShape.getColor()) + "\n"
               + "Appears at t=" + newAppearTime + "s\n" + "Disappears at t="
               + newDisappearTime + "s\n";

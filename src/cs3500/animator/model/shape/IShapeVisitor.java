@@ -18,5 +18,5 @@ public interface IShapeVisitor {
    * @param shape the rectangle shape to visit
    * @return shape of the same type of shape taken in
    */
-  Shapes visit(RectangleShape shape);
+  Shapes visit(Rectangle shape);
 }

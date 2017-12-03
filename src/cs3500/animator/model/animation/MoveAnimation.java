@@ -14,7 +14,7 @@ public class MoveAnimation extends AAnimations {
   private Posn dest;
 
   /**
-   * Constructs a {@code MoveAnimation} object.
+   * Constructs a {@code MoveAnimationAdapter} object.
    *
    * @param shape The shape that the move animation will be implemented on
    * @param start The start time of the animation
@@ -122,5 +122,15 @@ public class MoveAnimation extends AAnimations {
             + "from=\"" + this.dest.getY() + "\" to=\""
             + this.origin.getY() + "\" fill=\"freeze\" />\n";
     return svg;
+  }
+
+  @Override
+  public Posn getOldP() {
+    return this.origin;
+  }
+
+  @Override
+  public Posn getNewP() {
+    return this.dest;
   }
 }

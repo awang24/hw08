@@ -10,14 +10,8 @@ import java.util.List;
 
 import javax.swing.Timer;
 
-import cs3500.animator.provider.model.ChangeColorOperation;
 import cs3500.animator.provider.model.IAnimationOperations;
 import cs3500.animator.provider.model.IShape;
-import cs3500.animator.provider.model.MoveOperation;
-import cs3500.animator.provider.model.OperationType;
-import cs3500.animator.provider.model.Oval;
-import cs3500.animator.provider.model.Rectangle;
-import cs3500.animator.provider.model.ScaleOperation;
 import cs3500.animator.provider.model.ShapeType;
 
 /**
@@ -82,11 +76,7 @@ public class HybridAnimationPanel extends AnimationPanel {
     this.shapes = new ArrayList<IShape>();
 
     for (IShape s : shapesOriginal) {
-      if (s.getShapeType() == ShapeType.rectangle) {
-        shapes.add(new Rectangle((Rectangle) s));
-      } else {
-        shapes.add(new Oval((Oval) s));
-      }
+      shapes.add(s.copyShape());
     }
 
   }
@@ -97,13 +87,7 @@ public class HybridAnimationPanel extends AnimationPanel {
   public void copyLoOperations() {
     this.operations = new ArrayList<IAnimationOperations>();
     for (IAnimationOperations operation : operationsOriginal) {
-      if (operation.getType() == OperationType.move) {
-        operations.add(new MoveOperation((MoveOperation) operation));
-      } else if (operation.getType() == OperationType.changeColor) {
-        operations.add(new ChangeColorOperation((ChangeColorOperation) operation));
-      } else {
-        operations.add(new ScaleOperation((ScaleOperation) operation));
-      }
+      operations.add(operation.copyOperation());
     }
   }
 
